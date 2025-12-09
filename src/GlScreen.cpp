@@ -13,7 +13,7 @@ namespace {
 		auto res = glfwInit();
 		if (res != GLFW_TRUE) { throw std::runtime_error("Couldn't initialize GLFW"); }
         Window = glfwCreateWindow(w, h, "Figures", nullptr, nullptr);
-		if (!Window) { throw std::runtime_error("Couldn't create glfwWindow"); }
+		if (!Window) { glfwTerminate(); throw std::runtime_error("Couldn't create glfwWindow"); }
         glfwMakeContextCurrent(Window);
         glfwSetFramebufferSizeCallback(Window, framebuffer_size_callback);
         glfwSwapInterval(1);

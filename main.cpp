@@ -2,7 +2,7 @@
 #include "GlScreen.h"
 #include <FigureCollection.h>
 
-int main() {
+int main() try {
 	using namespace Figures;
 	ConsoleScreen console_scr;
 	FigureCollection<ConsoleScreen> fc_console;
@@ -28,4 +28,10 @@ int main() {
 	gl_scr.render();
 	gl_scr.exec();
 	return 0;
+}
+catch (std::exception& e) {
+	std::cout << "std exception: " << e.what() << std::endl;
+}
+catch (...) {
+	std::cout << "Unknown error\n";
 }
