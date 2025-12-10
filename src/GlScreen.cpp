@@ -24,12 +24,6 @@ namespace {
 GlScreen::GlScreen(int w, int h) {
 	handle_ = { init(w,h), [](void* ptr) { glfwTerminate(); } };
 }
-void GlScreen::add(const Polygon2D& v) {
-	std::vector<triplet> vec;
-	vec.reserve(v.size());
-	for (auto p : v) { vec.push_back({ p.x, p.y, 0.0f }); }
-	figures_.push_back(std::move(vec));
-}
 void GlScreen::render() {
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);

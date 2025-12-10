@@ -22,9 +22,7 @@ int main() try {
 	fc.addFigure(Pentagon{ { -0.2f, -0.2f }, { -0.3f, 0.1f }, { 0.0f, 0.3f }, {0.3f, 0.1f}, {0.2f, -0.2f} });
 	fc.addFigure(Rectangle{ { -0.1f, 0.8f }, { 0.1f, 0.6f } });
 	fc.addFigure(Circle({ -0.78f, 0.78f }, 0.2f));
-	for (const auto& fig : fc) {
-		draw(fig, gl_scr);
-	}
+	for (const auto& fig : fc) { draw(fig, gl_scr); }
 	gl_scr.render();
 	gl_scr.exec();
 	return 0;

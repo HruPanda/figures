@@ -1,11 +1,18 @@
 #pragma once
-#include <Vector2D.h>
+#include <Vector3D.h>
 #include <array>
 
 namespace Figures {
-	struct Triangle final {
-		std::array<Vector2D, 3> vert_{};
-		constexpr Triangle() noexcept = default;
-		constexpr Triangle(Vector2D p1, Vector2D p2, Vector2D p3)	: vert_{p1,p2,p3} {}
+	class Triangle final {
+		std::array<Vector3D, 3> vert_;
+	public:
+		Triangle() noexcept = default;
+		constexpr Triangle(Vector3D p1, Vector3D p2, Vector3D p3) noexcept : vert_{p1,p2,p3} {}
+		constexpr void set_values(Vector3D p1, Vector3D p2, Vector3D p3) noexcept {
+			vert_ = { p1, p2, p3 };
+		}
+		[[nodiscard]] constexpr auto begin() const noexcept { return vert_.begin(); }
+		[[nodiscard]] constexpr auto end() const noexcept { return vert_.end(); }
 	};
+	static_assert(std::is_trivial<Triangle>::value);
 }
